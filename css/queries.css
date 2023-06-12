@@ -119,4 +119,68 @@
   .btn--form {
     margin-top: 1.2rem;
   }
+
+  /* MOBILE NAVIGATION */
+  .btn-mobile-nav {
+    display: block;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.97);
+    /* to make it no longer a flex item */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* to make the menu items cover the viewport */
+    width: 100%;
+    height: 100vh; /*100% of viewport height units*/
+    transform: translateX(100%); /*move out of the screen completely*/
+
+    /* to center the contents horizontally and vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transition: all 0.5s; all means which property do we want to annimate */
+    transition: all 0.5s ease-in; /*third property ease-out is how the transition should take place*/
+
+    /* Hide Navigation */
+    /* Allows NO transitions at all */
+    /* display: none; */
+
+    /* In order to hide an element without using display: none;  we can animate opacity */
+
+    /* 1) Hide it visually */
+    opacity: 0; /*it becomes invisible but tab will still work on it*/
+
+    /* 2) Make it inaccessible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3) Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
 }
